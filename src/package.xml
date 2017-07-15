@@ -2,21 +2,31 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>reflex</fullName>
     <types>
+        <members>AssignmentNotificationController</members>
         <members>Pricing_UpdateTool</members>
+        <members>Pricing_UpdateToolTest</members>
         <members>ReflexSettings</members>
         <members>ReflexTests</members>
+        <members>SobjectExtension</members>
         <members>SobjectTrigger</members>
         <members>TranslationAssignmentTrigger</members>
         <members>TranslationAssignment_DocumentList</members>
+        <members>TranslationAssignment_DocumentListTest</members>
         <members>TranslationAssignment_Rejected</members>
+        <members>TranslationAssignment_RejectedTest</members>
+        <members>TranslationFeedbackTest</members>
         <members>TranslationFeedbackTrigger</members>
+        <members>TranslationFeedbackTriggerTest</members>
         <members>TranslationFeedback_RateTranslator</members>
         <members>TranslationTrigger</members>
         <members>Translation_AssignToBranch</members>
         <members>Translation_EstimatePrice</members>
+        <members>Translation_EstimatePriceTest</members>
         <members>Translation_ManageAssignment</members>
+        <members>Translation_ManageAssignmentTest</members>
         <members>Translation_RollupAssignments</members>
         <members>Translation_StatusRejected</members>
+        <members>Translation_StatusRejectedTest</members>
         <name>ApexClass</name>
     </types>
     <types>

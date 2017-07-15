@@ -111,6 +111,7 @@ public with sharing class ReflexTests {
     	t.Estimated_Units__c = ReflexSettings.TRANSLATION_UNIT_CHAR;
     	t.Source_Language__c = languageList[languageList.size()-1].Id;
     	t.Target_Language__c = languageList[languageList.size()-2].Id;
+        t.Iroda__c = 'Budapest';
     	t.Due_Date__c = Datetime.Now() + 5;
     	insert t;
     	translationList.add(t);

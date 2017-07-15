@@ -56,7 +56,7 @@ public with sharing class Translation_ManageAssignment {
         initializeTranslationAssignmentList();
         initializeTranslationAssWrapperList();
         initializeRatingOptions();
-        initializeStatusInfo();
+        //initializeStatusInfo();
         initializeTranslationFeedbackList();
         insertedTranslationFeedback = new Translation_Feedback__c();
         initializeTranslatorList();
@@ -221,6 +221,8 @@ public with sharing class Translation_ManageAssignment {
             translatorList.add(new SelectOption(tra.Translator__c, tra.Translator__r.Name));
         }
     }
+
+    // @DEPR
     public void initializeStatusInfo() {
         if (translation.Customer_Status__c != ReflexSettings.CUSTOMER_STATUS_APPROVED
             || !(translation.Manager_Status__c == ReflexSettings.MANAGER_STATUS_APPROVED || translation.Manager_Status__c == ReflexSettings.MANAGER_STATUS_MODIFIED)) {

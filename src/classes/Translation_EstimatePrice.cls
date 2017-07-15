@@ -1,3 +1,5 @@
+// @@ DEPRECATED
+// the last update statement is commented out
 public class Translation_EstimatePrice extends TranslationTrigger {
     public static final string TRANSLATION_UNIT_CHAR = ReflexSettings.TRANSLATION_UNIT_CHAR;
     public static final string TRANSLATION_UNIT_WORD = ReflexSettings.TRANSLATION_UNIT_WORD;
@@ -16,7 +18,8 @@ public class Translation_EstimatePrice extends TranslationTrigger {
     	
         if (sobjectNew.Target_Language__c == null) {   sobjectNew.addError('Please set the Language To field'); return false;}    	
         if (sobjectNew.Source_Language__c == null) { sobjectNew.addError('Please set the Language From field'); return false;}
-        
+    
+
         // if the price is locked, we dont do anything
         if (sobjectNew.Lock_Price__c) {
         	return false;
@@ -256,7 +259,8 @@ public class Translation_EstimatePrice extends TranslationTrigger {
             
             // setting the company-wide minimal
             Decimal minPrice = defaultOf(Decimal.valueOf(ReflexSettings.getSettingValue('MINIMUM_CUSTOMER_PRICE_' + estimate.Region__c)),0);
-            estimate.Estimated_Price__c =  calculatedPrice < minPrice ? minPrice : calculatedPrice;
+            
+            //estimate.Estimated_Price__c =  calculatedPrice < minPrice ? minPrice : calculatedPrice;
         }
     }
 
