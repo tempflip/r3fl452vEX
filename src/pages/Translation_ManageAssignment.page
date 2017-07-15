@@ -1,0 +1,430 @@
+<apex:page standardController="Translation__c" extensions="Translation_ManageAssignment" action="{!initialize}">
+<apex:includeScript value="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" />
+
+<style>
+.totalRow {
+    border: none !important;
+    margin: 0;
+}
+.translator-table td {
+    padding: 10px;
+}
+
+.translator-table {
+    width: 100%;
+    border-spacing: 0px;
+    margin-bottom: 25px;
+}
+
+.document-label {
+    background-color: #99CCFF; 
+    margin: 2px; 
+    padding: 3px; 
+    border-radius:5px;
+}
+
+.action-button {
+    background-color: #B8F1D4; 
+    margin: 2px; 
+    padding: 5px; 
+    border: 1px solid #9FBFFF;
+    border-radius:5px;
+    font-size: 12px;
+}
+</style> 
+ 
+    <apex:pageMessages ></apex:pageMessages>
+    <apex:sectionHeader title="{!translation.Name}" subtitle="Manage Translation Assignments"/>
+    
+    <apex:form id="mainForm">
+        <apex:pageBlock title="Available Translators" mode="mainDetail">
+            <apex:pageBlockSection title="Job Information" collapsible="false">
+               
+                <apex:outputField value="{!translation.Assignment_Status__c}"/>  
+                <apex:outputField value="{!translation.Source_Language__c}"/>
+
+                <apex:outputField value="{!translation.Translating_Status__c}"/>   
+                <apex:outputField value="{!translation.Target_Language__c}"/>
+
+                <apex:outputField value="{!translation.Proofreading_Status__c}"/>  
+                <apex:outputField value="{!translation.Field__c}"/>                   
+                
+                <apex:outputField value="{!translation.Editing_Status__c}"/>   
+                <apex:outputField value="{!translation.Express__c}"/>
+
+                <apex:outputField value="{!translation.Supervising_Status__c}"/> 
+                <apex:outputField value="{!translation.Urgent__c}"/>
+                
+         
+                <apex:outputText value="{!translation.Estimated_Price__c} {!translation.Currency__c}" label="Price" />
+                <apex:outputField value="{!translation.Proofreading__c}"/>
+                
+                <apex:outputText value="{!translation.Translator_Wage__c} {!translation.Currency__c}" label="Translator Wage"/>    
+                <apex:outputField value="{!translation.Native_Language_Proofreading__c}"/>    
+                
+                
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                <apex:outputField value="{!translation.Proofreading_Only__c}"/>
+                
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                <apex:outputField value="{!translation.Certified__c}"/>
+                
+                
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>    
+                <apex:outputField value="{!translation.Editing__c}"/>
+                
+                           
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="Date Information" collapsible="false">
+                <apex:outputField value="{!translation.Due_Date__c}"/>
+                <apex:outputField value="{!translation.Approval_Date__c}"/>
+                
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                <apex:outputField value="{!translation.Assignment_Date__c}"/>
+                
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+        <apex:pageBlock mode="mainDetail" title="Job Assignments">
+            <apex:pageBlockSection columns="1">
+                <apex:outputPanel id="docPanel">
+                    Folder:
+                    <apex:selectList value="{!selectedFolderId}" size="1" style="width: 300px;">
+                        <apex:selectOptions value="{!folderList}" />
+                        <apex:actionSupport event="onchange" action="{!folderChange}" rerender="docPanel" status="folderChange"/>
+                    </apex:selectList>
+                    
+                    Document:
+                    
+                    <apex:selectList value="{!selectedDocumentId}" size="1" style="width: 300px;">
+                        <apex:selectOptions value="{!documentList}" />
+                    </apex:selectList>
+                    
+                    <apex:actionStatus id="folderChange">
+                        <apex:facet name="start">
+                            <apex:image value="/img/loading.gif" />
+                        </apex:facet>                       
+                    </apex:actionStatus>
+                    
+                </apex:outputPanel>
+                <p/>
+            </apex:pageBlockSection>
+            
+
+
+                <apex:repeat value="{!translationAssWrapperList}" var="a">
+                    <table class="translator-table">
+                        <tr style="background-color: #E4E4EE; font-size: 120%;">
+                            <td style="width: 30%">
+                                <apex:inputCheckbox value="{!a.selected}"/>
+                                &nbsp;
+                                <apex:outputField value="{!a.translationAssignment.Translator__c}"/>
+                                <p/>
+                                <apex:outputPanel rendered="{!a.translationAssignment.Assignment_Status__c == 'Rejected'}">
+                                    Rejection Reason:
+                                    {!a.translationAssignment.Rejection_Reason__c}
+                                </apex:outputPanel>
+                            </td>
+
+                            <td>
+                                <apex:image value="/img/icon/questions16.png" rendered="{!a.translationAssignment.Task__c == 'Translating'}"/>
+                                <apex:image value="/img/msg_icons/confirm16.png" rendered="{!a.translationAssignment.Task__c == 'Proofreading'}"/>
+                                <apex:image value="/img/icon/computer16.png" rendered="{!a.translationAssignment.Task__c == 'Editing'}"/>
+                                <apex:image value="/img/icon/profile16.png" rendered="{!a.translationAssignment.Task__c == 'Supervising'}"/>
+                                &nbsp;
+                             
+                                <apex:outputField value="{!a.translationAssignment.Task__c}" /> 
+                                <apex:inputField value="{!a.translationAssignment.Assignment_Status__c}" />
+                            </td>
+
+                            <td>
+                                
+                                Due Date:
+                                <apex:inputField value="{!a.translationAssignment.Due_Date__c}"/>                        
+                            </td>   
+                            <td>
+                                <div class="message-div">
+                                    <span class="show-message action-button">Set/Show Message</span>
+                                    <div>
+                                        <br/>
+                                        <apex:inputTextarea value="{!a.translationAssignment.Message__c}" cols="50" rows="6"/>
+                                    </div>
+                                </div>
+                                <p/>
+                            </td>
+                        </tr>
+                        <tr style="font-size: 120%;">
+                            <td>
+                                <apex:image value="/img/icon/custom51_100/pencil16.png"/>
+                                Estimated Count
+                                &nbsp;
+                                <apex:inputField value="{!a.translationAssignment.Estimated_Count__c}" style="width: 4.5em;"/>
+                                &nbsp;
+                                <apex:image value="/img/icon/custom51_100/pencil16.png"/>
+                                Actual Count
+                                &nbsp;
+                                <apex:inputField value="{!a.translationAssignment.Actual_Count__c}" style="width: 4.5em;"/>                               
+                            </td>
+                           
+                            <td>
+                                <apex:image value="/img/icon/cash16.png"/>
+                                &nbsp;
+                                <apex:inputField value="{!a.translationAssignment.Translator_Price__c}" style="width: 6em;"/>
+                                {!translation.Currency__c}
+
+                                <apex:inputCheckbox value="{!a.translationAssignment.Postpaid__c}">
+                                    <apex:actionSupport event="onchange" action="{!doNothing}" reRender="postPaidPanel"/>
+                                </apex:inputCheckbox>
+                                Postpaid
+                            </td>
+                            <td>
+                                <apex:outputPanel id="postPaidPanel">
+                                    <apex:outputPanel rendered="{!a.translationAssignment.Postpaid__c}">
+                                        <apex:inputField value="{!a.translationAssignment.Unit_Wage__c}" style="width: 3em;" />
+                                        &nbsp;
+                                        <apex:outputText value="{!translation.Currency__c} / unit" />
+                                        
+                                        <apex:commandLink action="{!updateUnitWage}">
+                                            <apex:param name="assignmentId" value="{!a.translationAssignment.Id}"/>
+                                            <span style="font-size: 80%;">
+                                                update
+                                            </span>
+                                        </apex:commandLink>
+                                    </apex:outputPanel>
+                                </apex:outputPanel>                            
+                            </td>
+                        </tr>
+                        
+                        <tr>    
+                        
+                            <td colspan="2">
+                                <apex:outputPanel >
+                                    <apex:repeat value="{!a.documents}" var="doc">
+                                        <span class="document-label">
+                                            <apex:commandLink action="{!removeDocumentFromAssignment}">
+                                                <apex:param name="assignmentId" value="{!a.translationAssignment.Id}"/>
+                                                <apex:param name="documentId" value="{!doc.Id}"/>
+                                                X 
+                                            </apex:commandLink>
+                                            {!doc.Name}
+                                        </span>
+                                    </apex:repeat>
+                                    <p/>
+                                    <span class="action-button">
+                                        <apex:commandLink action="{!addDocumentToAssignment}" value="">
+                                            <apex:param name="assignmentId" value="{!a.translationAssignment.Id}"/>   
+                                            <apex:image value="/img/icon/orderBell16.png" />
+                                            Add Selected Document
+                                        </apex:commandlink>
+                                    </span>
+                                    
+                                    <span class="action-button">
+                                        <apex:commandLink value="" action="{!sendDocuments}">
+                                            <apex:param name="assignmentId" value="{!a.translationAssignment.Id}"/>                    
+                                             <apex:image value="/img/icon/mail16.png" />
+                                             Send Docs in Email
+                                        </apex:commandLink>  
+                                    </span>                                     
+                                    
+                                </apex:outputPanel>
+                            </td>
+                            <td>
+
+
+             
+                
+                                <!--
+                                <apex:outputField value="{!a.translationAssignment.Started__c}"/>
+         
+                                <apex:outputField value="{!a.translationAssignment.Finished__c}"/>
+                                -->
+                         </td>
+                     </tr>
+                </table>
+            </apex:repeat>
+
+            
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Update Assignments" action="{!updateAssignments}" />
+                <apex:commandButton value="Remove Selected" action="{!deleteAssignment}" />
+            </apex:pageBlockButtons>
+        
+        </apex:pageBlock>
+
+        <apex:pageBlock title="Available Translators" mode="mainDetail" rendered="{!translation.Customer_Status__c == 'Approved' && translation.Manager_Status__c == 'Approved'}">
+            <apex:pageBlockTable value="{!translatorWrapperList}" var="t">
+
+                <apex:column >
+                    <apex:outputField value="{!t.lpair.Translator__r.Name}" />
+          
+                    <apex:facet name="header">    
+                        Name
+                    </apex:facet>
+                </apex:column>
+
+                <apex:column >
+                    <apex:image value="/img/msg_icons/confirm16.png" rendered="{!t.fieldMatches == true || translation.Field__c == null}"/>
+                    <apex:image value="/img/msg_icons/error16.png" rendered="{!t.fieldMatches != true && translation.Field__c != null}"/>
+                    <apex:facet name="header">
+                        Field Professional
+                    </apex:facet> 
+                </apex:column>
+
+                <apex:column >
+                    <apex:outputPanel rendered="{!translation.Proofreading_Only__c == false}">
+                        <span class="action-button">
+                            <apex:commandLink value="" action="{!addTranslator}">
+                                <apex:param name="translatorId" value="{!t.lpair.Translator__c}"/>                    
+                                <apex:image value="/img/icon/questions16.png" />
+                                 Add as Translator &nbsp;
+                            </apex:commandLink>
+                        </span>
+                    </apex:outputPanel>
+                    
+                    <apex:outputPanel rendered="{!t.lpair.Translator__r.Proofreading__c == true && (translation.Proofreading__c == true || translation.Proofreading_Only__c == true)}">
+                        <span class="action-button">
+                            <apex:commandLink value="" action="{!addProofreader}" >
+                                <apex:param name="translatorId" value="{!t.lpair.Translator__c}"/>
+                                <apex:image value="/img/msg_icons/confirm16.png" />
+                                 Add as Proofreader &nbsp;
+                            </apex:commandLink>
+                        </span>
+                    </apex:outputPanel>
+
+                    <apex:outputPanel rendered="{!t.lpair.Translator__r.Native_Language_Proofreading__c == true && translation.Native_Language_Proofreading__c == true}">
+                        <span class="action-button">
+                            <apex:commandLink value="" action="{!addProofreader}" >
+                                <apex:param name="translatorId" value="{!t.lpair.Translator__c}"/>
+                                <apex:image value="/img/msg_icons/confirm16.png" />
+                                 Add as NLP &nbsp;
+                            </apex:commandLink>
+                        </span>
+                    </apex:outputPanel>
+                    
+                    <apex:outputPanel rendered="{!t.lpair.Translator__r.Supervisor__c == true && translation.Proofreading__c == false && translation.Native_Language_Proofreading__c == false && translation.Proofreading_Only__c == false}">
+                        <span class="action-button">
+                            <apex:commandLink value="" action="{!addSupervisor}" >
+                                <apex:param name="translatorId" value="{!t.lpair.Translator__c}"/>
+                                <apex:image value="/img/icon/profile16.png" />
+                                Add as Corrector &nbsp;
+                            </apex:commandLink>
+                        </span>
+                    </apex:outputPanel>
+                    
+                    <apex:outputPanel rendered="{!t.lpair.Translator__r.Editor__c == true && translation.Editing__c == true}">
+                        <span class="action-button">
+                            <apex:commandLink value="" action="{!addEditor}">
+                                <apex:param name="translatorId" value="{!t.lpair.Translator__c}"/>
+                                <apex:image value="/img/icon/computer16.png" />
+                                Add as Editor &nbsp;
+                            </apex:commandLink>
+                        </span>
+                    </apex:outputPanel>
+                </apex:column>
+            
+                <apex:column >
+                    {!t.lpair.Translator__r.Minimum_Wage__c}
+                    <apex:facet name="header">
+                        Minimum Wage    
+                    </apex:facet>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+
+
+        
+        <apex:pageBlock title="Feedback" mode="mainDetail">
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Update Rating" action="{!rateTranslators}"/>
+            </apex:pageBlockButtons>
+            
+
+               
+                <apex:pageBlockTable value="{!translationFeedbackList}" var="f">
+                    <apex:column >
+                            <apex:outputText value="{!f.Translator__r.Name}" rendered="{!f.Translator__r.Name != null}"/>
+                            <apex:outputText value="General Rating" rendered="{!f.Translator__r.Name == null}"/>
+                       <apex:facet name="header">
+                           Translator
+                       </apex:facet>
+                       <apex:facet name="footer">
+                           <apex:outputPanel >
+                               <apex:selectList value="{!insertedTranslationFeedback.Translator__c}" size="1">
+                                   <apex:selectOptions value="{!translatorList}"/>
+                               </apex:selectList>
+                           </apex:outputPanel>
+                       </apex:facet>
+                   </apex:column>
+
+                    <apex:column >
+                        <apex:image value="/img/icon/questions16.png" rendered="{!f.Task__c == 'Translating'}"/>
+                        <apex:image value="/img/msg_icons/confirm16.png" rendered="{!f.Task__c == 'Proofreading'}"/>
+                        <apex:image value="/img/icon/computer16.png" rendered="{!f.Task__c == 'Editing'}"/>
+                        <apex:image value="/img/icon/profile16.png" rendered="{!f.Task__c == 'Supervising'}"/>
+                        
+                        <apex:inputField value="{!f.Task__c}"/>
+                        <apex:facet name="header">
+                           Task
+                        </apex:facet>
+                        <apex:facet name="footer">
+                            <apex:commandButton value="Add and Rate Translator" action="{!addFeedback}"/>
+                        </apex:facet>
+                    </apex:column>  
+
+                    <apex:column >
+                        <apex:inputField value="{!f.Type__c}"/>
+                        <apex:facet name="header">
+                           Rating Type
+                        </apex:facet>
+                    </apex:column>  
+                   
+                   <apex:column >
+                            <apex:selectList value="{!f.Customer_Experience__c}" size="1">
+                                <apex:selectOptions value="{!ratingOptions}" />
+                            </apex:selectList>
+                       <apex:facet name="header">
+                           Customer Experience
+                       </apex:facet>
+                    </apex:column> 
+                                               
+                    <apex:column >
+                            <apex:selectList value="{!f.Quality__c}" size="1">
+                                <apex:selectOptions value="{!ratingOptions}" />
+                            </apex:selectList>
+                       <apex:facet name="header">
+                           Quality
+                       </apex:facet>
+                    </apex:column>    
+                                   
+                    <apex:column >
+                    
+                            <apex:selectList value="{!f.Reliability__c}" size="1">
+                                <apex:selectOptions value="{!ratingOptions}" />
+                            </apex:selectList>  
+                       <apex:facet name="header">
+                           Reliability
+                       </apex:facet>
+                    </apex:column>  
+                                                            
+                    <apex:column >
+                            <apex:selectList value="{!f.Communication__c}" size="1">
+                                <apex:selectOptions value="{!ratingOptions}" />
+                            </apex:selectList>
+                       <apex:facet name="header">
+                           Communication
+                       </apex:facet>
+                   </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+    
+<script>
+    $(document).ready(function() {
+        $('.message-div > div').hide();
+        $('.show-message').click(function() {
+            $(this).siblings('div').toggle();
+        });    
+    });
+</script>
+</apex:page>

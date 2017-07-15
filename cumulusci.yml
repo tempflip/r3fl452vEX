@@ -1,0 +1,5 @@
+project:
+    name: reflex_prod
+    package:
+        name: reflex
+        namespace: 

@@ -1,0 +1,174 @@
+<apex:page standardController="Translation__c" renderAs="pdf" standardStylesheets="false" applyhtmltag="false" showHeader="false">
+<head>
+<style>
+
+    body {
+        font-size: 12px;
+        font-family: Arial Unicode MS;
+    }
+    
+    div {
+        margin-bottom: 20px;
+    }    
+    
+    p {
+        margin-bottom: 4px;
+    }
+    .title {
+        font-size: 150%;
+        font-weight: bold;
+        text-align: center;
+    }
+    .bottomDiv {
+        font-size: 75%;
+        color: #aaa;
+        text-align: center;
+    }
+    .square {
+        font-weight: bold;
+        font-size: 200%;
+    }
+    .td50p {
+        width: 50%;
+        vertical-align: top;
+    }
+    
+    .border {
+        border: 2px solid #000;
+    }
+    
+    .bold {
+        font-weight: bold;
+    }
+    .red {
+        color: #f00;
+    }
+    .padding {
+        padding: 15px;
+    }
+    .floatLeft {
+        float:left;
+        width:50%;
+    }
+    .clearBoth {
+        clear: both;
+    }
+</style>
+</head>
+
+    <div class="title">
+        MEGBÍZÁSI SZERZŐDÉS SZAKFORDÍTÁSRA
+    </div>
+
+    <div>    
+        <div class="floatLeft">
+                    <span class="bold">A megbízó (cég)neve:</span>
+                    {!Translation__c.Account__r.Name}
+                    <p/>
+                    Címe:
+                    {!Translation__c.Account__r.BillingStreet}
+                    <br/>
+                    {!Translation__c.Account__r.BillingCity}
+                    {!Translation__c.Account__r.BillingPostalCode}
+                    <p/>
+                    E-mail cím:
+                    {!Translation__c.Contact__r.Email}
+        </div>
+        <div>
+                    <span class="bold">Kapcsolattartó:</span>
+                    {!Translation__c.Contact__r.Name}
+                    <p/>
+                    Telefon:
+                    {!Translation__c.Contact__r.Phone}
+
+         </div>
+     </div>
+     
+     
+     
+     <div class="bold red clearBoth" >
+         Ha új megrendelő, honnan szerzett tudomást a Reflexről?
+         ……………………………………………………
+     </div>
+    
+     <div class="bold" >
+         Megnevezés és/vagy a számlára kért azonosító:
+         ………………………………………………………………
+     </div>
+     
+     <div  class="border padding bold">
+        Szakfordítás {!Translation__c.Source_Language__r.Name} nyelvről {!Translation__c.Target_Language__r.Name} nyelvre 
+        
+        <apex:outputText value=" lektorálással" rendered="{!Translation__c.Proofreading__c == true}" />
+        <p/>
+        Dokumentumszám: {!Translation__c.Name}
+        <p/>
+        
+        
+         <span class="square">&#9633;</span> Hitelesítve 
+         <span class="square">&#9633;</span> Záradékolva Eredetivel / Másolattal fűzve ...... példányban
+         <p/>
+         
+         Kért határidő vagy sürgősség:
+         <apex:outputText value="{0,Date, yyyy.MM.dd.}">
+             <apex:param value="{!Translation__c.Due_Date__c}" />
+         </apex:outputText>   
+     </div>
+     
+     <div  class="border padding bold">
+         Az elkészült fordítás leszállításának módja:
+         
+         <p/>
+         <span class="square">&#9633;</span>  ......................................fordítóirodában átvéve 
+         <span class="square">&#9633;</span> fax 
+         <span class="square">&#9633;</span> posta 
+         <span class="square">&#9633;</span> futár
+         <p/>
+    
+         <span class="square">&#9633;</span> e-mailben, a ........................................... címre 
+         <span class="square">&#9633;</span> egyéb: …………………………………….
+     </div>
+     
+     <div  class="border padding bold">
+         Alapdíjas és fix díjas dokumentumok kivételével az elszámolás a kész fordítás szóközzel növelt karakterszáma (leütésszáma) alapján történik.
+         <p/>
+         <table>
+            <tr>
+                <td class="td50p">
+                    Egységár: …………………. Ft/leütés
+                    <p/>
+                    Fizetési mód: ……………………………..
+                </td>
+                <td>
+                    Fix ár / Irányár: …………………………………………
+                    <p/>
+                    Előleg: ……………………………………………………. 
+                </td>
+            </tr>
+        </table>
+    </div>   
+
+    <div>
+        A Reflex Fordítóiroda teljes körű anyagi felelősséget, legfeljebb a megbízási díj teljes visszafizetésének mértékéig, kizárólag lektorált fordításaiért vállal.
+        <p/>
+        A Reflex Fordítóiroda és valamennyi alvállalkozója minden megbízást szigorúan bizalmasan kezel!
+        <p/>
+        A Reflex Fordítóiroda megbízásait szakfordító alvállalkozók bevonásával teljesíti.
+    </div>
+
+    <div>
+        Dátum: ……………………………………………… A megrendelő aláírása: …………………………………………………….
+    </div>
+    
+    <div class="bottomDiv">
+        REFLEX Fordítóiroda Kft. • alapítva 1983-ban • www.reflex.hu
+        <br/>
+        Cégbíróság: Miskolc • Cégjegyzékszám: 05-09-000445 • Adószám: 10394863-2-05
+        <br/>
+        3525 Miskolc, Széchenyi u. 37. • Tel.: +3646/411-140, Fax: +3646/411-263 • e-mail: miskolc@reflex.hu
+        <br/>
+        8000 Székesfehérvár, Piac tér 4-8. • Tel./Fax: +3622-951-483 • e-mail: szekesfehervar@reflex.hu
+        <br/>
+        További irodáink: Budapest • Debrecen • Győr • Kecskemét • Nyíregyháza • Pécs • Sopron • Szeged • Szombathely • Veszprém • Zamárdi
+    </div>
+</apex:page>

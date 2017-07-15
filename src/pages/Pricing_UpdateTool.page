@@ -1,0 +1,93 @@
+<apex:page controller="Pricing_UpdateTool" action="{!initialize}">
+<apex:form >
+        
+        If you are not 100% sure, what are you doing, PLEASE ASK YOUR SYSTEM ADMINISTRATOR!
+        <p/>
+        
+    Available languages:
+    <ul>
+    <apex:repeat value="{!languageList}" var="l">
+        <li>{!l.Language_Code__c} ({!l.Name})</li>
+    </apex:repeat>
+    </ul>
+    
+    <p/>
+    Region:
+    <apex:inputText value="{!region}"/>
+    <br/>
+    
+    Source Char:
+    <apex:inputText value="{!sourceChar}"/>
+    <br/>
+        
+    Target Char:
+    <apex:inputText value="{!targetChar}"/>
+    <br/>
+    
+    Source Word:
+    <apex:inputText value="{!sourceWord}"/>
+    <br/>
+        
+    Target Word:
+    <apex:inputText value="{!targetWord}"/>     
+    <p/>
+
+    Proofreading Multiplier:
+    <apex:inputText value="{!prMult}"/>     
+    <p/>
+
+    Express Multiplier:
+    <apex:inputText value="{!exMult}"/>     
+    <p/>   
+        
+    Urgent Multiplier:
+    <apex:inputText value="{!urMult}"/>     
+    <p/>    
+    
+    Lists:
+    <p/>
+    <apex:inputText value="{!lList1}"/>
+    <br/>
+    <apex:inputText value="{!lList2}"/>
+    <br/>
+    <apex:commandButton value="Generate!" action="{!generatePricing}"/>
+    <br/>
+    <apex:commandButton value="Upsert!" action="{!upsertPricing}"/>
+    
+    <p/>
+    
+    <apex:pageBlock >
+
+        <apex:pageBlockTable value="{!pricingWrapperList}" var="p">
+            <apex:column >
+                <apex:outputText value="NEW!" rendered="{! !p.existing}"/>
+            </apex:column>
+            <apex:column value="{!p.pricing.Name}"/>
+            <apex:column value="{!p.pricing.Language_From__c}"/>
+            <apex:column value="{!p.pricing.Language_To__c}"/>
+            <apex:column >
+                <apex:repeat value="{!p.regionPricingList}" var="rp">
+                    <apex:outputText value="NEW!" rendered="{! !rp.existing}" />
+                    {!rp.rp.id}
+                    <br/>
+                    R:
+                    {!rp.rp.Region__c}
+                    Char:
+                    {!rp.rp.Source_Char_Price__c} /
+                    {!rp.rp.Target_Char_Price__c}
+                    Word:
+                    {!rp.rp.Source_Word_Price__c} /
+                    {!rp.rp.Target_Word_Price__c}
+                    
+                    P: {!rp.rp.Proofreading_Multiplier__c}
+                    U: {!rp.rp.Urgent_Multiplier__c}
+                    E: {!rp.rp.Express_Multiplier__c}
+                    
+                <br/>    
+                </apex:repeat>
+            </apex:column>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+
+</apex:form>   
+</apex:page>
