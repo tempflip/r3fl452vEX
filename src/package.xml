@@ -137,6 +137,7 @@
         <members>Translation__c.Estimated_Units__c</members>
         <members>Translation__c.Express__c</members>
         <members>Translation__c.Field__c</members>
+        <members>Translation__c.Financial_Status__c</members>
         <members>Translation__c.Invoice_Status__c</members>
         <members>Translation__c.Iroda__c</members>
         <members>Translation__c.Job_Status__c</members>
@@ -146,6 +147,7 @@
         <members>Translation__c.Manager_Status__c</members>
         <members>Translation__c.Megnevez_s__c</members>
         <members>Translation__c.Native_Language_Proofreading__c</members>
+        <members>Translation__c.Order_Status__c</members>
         <members>Translation__c.Price_Based__c</members>
         <members>Translation__c.Price__c</members>
         <members>Translation__c.Profit__c</members>

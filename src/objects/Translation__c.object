@@ -87,7 +87,7 @@
     <fields>
         <fullName>Assignment_Status__c</fullName>
         <externalId>false</externalId>
-        <label>Teljesítési státusz</label>
+        <label>@DEPR Teljesítési státusz</label>
         <required>false</required>
         <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>true</trackHistory>
@@ -197,7 +197,7 @@
         <fullName>Charge_Proofreading__c</fullName>
         <defaultValue>true</defaultValue>
         <externalId>false</externalId>
-        <label>Lektorálás esetén van felár</label>
+        <label>@DEPR Lektorálás esetén van felár</label>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -207,7 +207,7 @@
         <fullName>Charge_Urgent__c</fullName>
         <defaultValue>true</defaultValue>
         <externalId>false</externalId>
-        <label>Sürgős/expressz esetén van felár</label>
+        <label>@DEPR Sürgős/expressz esetén van felár</label>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -254,7 +254,7 @@
     <fields>
         <fullName>Customer_Status__c</fullName>
         <externalId>false</externalId>
-        <label>Megrendelői státusz</label>
+        <label>@DEPR Megrendelői státusz</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
@@ -295,7 +295,7 @@
     <fields>
         <fullName>Editing_Status__c</fullName>
         <externalId>false</externalId>
-        <label>Editing Status</label>
+        <label>@DEPR Editing Status</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -427,7 +427,7 @@
         <fullName>Express__c</fullName>
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
-        <label>Expressz</label>
+        <label>@DEPR Expressz</label>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -525,9 +525,41 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Financial_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Pénzügyi státusz</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Előleg fizetve</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Még nem számlázható</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Leszámlázva</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Fizetve</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Invoice_Status__c</fullName>
         <externalId>false</externalId>
-        <label>Számla státusz</label>
+        <label>@DEPR Számla státusz</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
@@ -738,7 +770,7 @@
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
         <inlineHelpText>Akkor jelöld be, ha az ajánlatádásnál végleges vállalási árat adsz meg, ami független a fordítás tényleges mennyiségétől.</inlineHelpText>
-        <label>Az ajánlati ár végleges</label>
+        <label>@DEPR Az ajánlati ár végleges</label>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -747,7 +779,7 @@
     <fields>
         <fullName>Manager_Status__c</fullName>
         <externalId>false</externalId>
-        <label>Projektvezetői státusz</label>
+        <label>@DEPR Projektvezetői státusz</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
@@ -796,6 +828,54 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Order_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Megrendelési státusz</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Megrendelve</fullName>
+                    <default>true</default>
+                </value>
+                <value>
+                    <fullName>Fordítás folyamatban</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Fordítás kész</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Lektorálás folyamatban</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Lektorálás kész</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Megrendelőnek leszállítva</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Megrendelés visszavonva</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Megrendelés kifogásolva</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Price_Based__c</fullName>
@@ -885,7 +965,7 @@
     <fields>
         <fullName>Proofreading_Status__c</fullName>
         <externalId>false</externalId>
-        <label>Proofreading Status</label>
+        <label>@DEPR Proofreading Status</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
@@ -1021,7 +1101,7 @@
     <fields>
         <fullName>Supervising_Status__c</fullName>
         <externalId>false</externalId>
-        <label>Supervising Status</label>
+        <label>@DEPR Supervising Status</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -1073,7 +1153,7 @@
     <fields>
         <fullName>Translating_Status__c</fullName>
         <externalId>false</externalId>
-        <label>Translating Status</label>
+        <label>@DEPR Translating Status</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -1112,7 +1192,7 @@
         <fullName>Urgent__c</fullName>
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
-        <label>Sürgős</label>
+        <label>@DEPR Sürgős</label>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
