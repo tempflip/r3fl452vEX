@@ -222,6 +222,8 @@ public with sharing class Translation_ManageAssignment {
         }
     }
     public void initializeStatusInfo() {
+        /*
+        // all deprecated statuses
         if (translation.Customer_Status__c != ReflexSettings.CUSTOMER_STATUS_APPROVED
             || !(translation.Manager_Status__c == ReflexSettings.MANAGER_STATUS_APPROVED || translation.Manager_Status__c == ReflexSettings.MANAGER_STATUS_MODIFIED)) {
 
@@ -231,6 +233,7 @@ public with sharing class Translation_ManageAssignment {
         if (translation.Assignment_Status__c == ReflexSettings.ASSIGNMENT_STATUS_CANCELED) {
                 addInfoMessage('This translation is Canceled!');
         }
+        */
         
     }
 

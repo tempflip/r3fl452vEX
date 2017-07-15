@@ -252,7 +252,7 @@
         
         </apex:pageBlock>
 
-        <apex:pageBlock title="Available Translators" mode="mainDetail" rendered="{!translation.Customer_Status__c == 'Approved' && translation.Manager_Status__c == 'Approved'}">
+        <apex:pageBlock title="Available Translators" mode="mainDetail">
             <apex:pageBlockTable value="{!translatorWrapperList}" var="t">
 
                 <apex:column >
