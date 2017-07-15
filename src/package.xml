@@ -4,6 +4,7 @@
     <types>
         <members>Pricing_UpdateTool</members>
         <members>ReflexSettings</members>
+        <members>ReflexTests</members>
         <members>SobjectTrigger</members>
         <members>TranslationAssignmentTrigger</members>
         <members>TranslationAssignment_DocumentList</members>
