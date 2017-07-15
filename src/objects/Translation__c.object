@@ -283,6 +283,61 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Deposit_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Előleg Dátum</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Deposit_Payment_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Előleg Fizetési Módja</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Utalás</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Bankkártya</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Készpénz</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Paypal</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Deposit__c</fullName>
+        <externalId>false</externalId>
+        <label>Előleg</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Due_Date__c</fullName>
         <externalId>false</externalId>
         <label>Határidő</label>
@@ -328,19 +383,6 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>El_leg__c</fullName>
-        <externalId>false</externalId>
-        <label>Előleg</label>
-        <precision>10</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Estimated_Count__c</fullName>
@@ -519,38 +561,6 @@
                 </value>
                 <value>
                     <fullName>OKIRAT</fullName>
-                    <default>false</default>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>Financial_Status__c</fullName>
-        <externalId>false</externalId>
-        <label>Pénzügyi státusz</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Előleg fizetve</fullName>
-                    <default>false</default>
-                </value>
-                <value>
-                    <fullName>Még nem számlázható</fullName>
-                    <default>false</default>
-                </value>
-                <value>
-                    <fullName>Leszámlázva</fullName>
-                    <default>false</default>
-                </value>
-                <value>
-                    <fullName>Fizetve</fullName>
                     <default>false</default>
                 </value>
             </valueSetDefinition>
@@ -872,6 +882,80 @@
                 </value>
                 <value>
                     <fullName>Megrendelés kifogásolva</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Payment_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Fizetés Dátuma</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Payment_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Pénzügyi státusz</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Előleg fizetve</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Még nem számlázható</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Leszámlázva</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Fizetve</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Payment_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Fizetés Módja</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Utalás</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Bankkártya</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Készpénz</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Paypal</fullName>
                     <default>false</default>
                 </value>
             </valueSetDefinition>
