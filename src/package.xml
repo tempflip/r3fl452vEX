@@ -3,6 +3,7 @@
     <fullName>reflex</fullName>
     <types>
         <members>AssignmentNotificationController</members>
+        <members>FixerRates</members>
         <members>Pricing_UpdateTool</members>
         <members>Pricing_UpdateToolTest</members>
         <members>ReflexSettings</members>
@@ -20,6 +21,7 @@
         <members>TranslationFeedback_RateTranslator</members>
         <members>TranslationTrigger</members>
         <members>Translation_AssignToBranch</members>
+        <members>Translation_CurrencyRate</members>
         <members>Translation_EstimatePrice</members>
         <members>Translation_EstimatePriceTest</members>
         <members>Translation_ManageAssignment</members>
@@ -27,6 +29,8 @@
         <members>Translation_RollupAssignments</members>
         <members>Translation_StatusRejected</members>
         <members>Translation_StatusRejectedTest</members>
+        <members>TriggerClass</members>
+        <members>TriggerHandler</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -42,6 +46,7 @@
         <members>TranslationFeedback_BeforeUpdate</members>
         <members>Translation_BeforeInsert</members>
         <members>Translation_BeforeUpdate</members>
+        <members>Translation_Gen</members>
         <name>ApexTrigger</name>
     </types>
     <types>
