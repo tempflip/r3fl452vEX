@@ -12,7 +12,8 @@ public with sharing class FixerRates implements Schedulable {
 	public void execute(SchedulableContext sc) {
 		FixerRates.retrieve();
 	}
-	
+
+	@future(callout=true)
 	public static void retrieve() {
         HttpRequest req = new HttpRequest();
         req.setTimeout(120000);
