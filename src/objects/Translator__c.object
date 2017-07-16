@@ -196,6 +196,18 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Char_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Char Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Comments__c</fullName>
         <externalId>false</externalId>
         <label>Megjegyzések</label>
@@ -541,6 +553,18 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Word_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Word Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>imp_languages__c</fullName>

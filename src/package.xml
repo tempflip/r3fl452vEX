@@ -67,9 +67,12 @@
         <members>Account_Pricing__c.Target_Language__c</members>
         <members>Account_Pricing__c.Target_Word_Price__c</members>
         <members>Account_Pricing__c.Urgent_Multiplier__c</members>
+        <members>Fixer_Rates__c.EUR_to_HUF__c</members>
         <members>Language_Pair__c.Base_Price__c</members>
+        <members>Language_Pair__c.Char_Price__c</members>
         <members>Language_Pair__c.Excluded__c</members>
         <members>Language_Pair__c.Express_Multiplier__c</members>
+        <members>Language_Pair__c.Field__c</members>
         <members>Language_Pair__c.Fluency_Level__c</members>
         <members>Language_Pair__c.From__c</members>
         <members>Language_Pair__c.Proofreading_Multiplier__c</members>
@@ -80,6 +83,7 @@
         <members>Language_Pair__c.To__c</members>
         <members>Language_Pair__c.Translator__c</members>
         <members>Language_Pair__c.Urgent_Multiplier__c</members>
+        <members>Language_Pair__c.Word_Price__c</members>
         <members>Language__c.Language_Code__c</members>
         <members>Language__c.Pricing__c</members>
         <members>Pricing__c.Language_From__c</members>
@@ -201,6 +205,7 @@
         <members>Translator__c.Billing_Street__c</members>
         <members>Translator__c.CAT_Tool__c</members>
         <members>Translator__c.Certified__c</members>
+        <members>Translator__c.Char_Price__c</members>
         <members>Translator__c.Comments__c</members>
         <members>Translator__c.Contact__c</members>
         <members>Translator__c.Deactivated__c</members>
@@ -220,12 +225,14 @@
         <members>Translator__c.Secondary_Mobile__c</members>
         <members>Translator__c.Skype_Id__c</members>
         <members>Translator__c.Supervisor__c</members>
+        <members>Translator__c.Word_Price__c</members>
         <members>Translator__c.imp_languages__c</members>
         <members>Translator__c.imp_price__c</members>
         <name>CustomField</name>
     </types>
     <types>
         <members>Account_Pricing__c</members>
+        <members>Fixer_Rates__c</members>
         <members>Language_Pair__c</members>
         <members>Language__c</members>
         <members>Position__c</members>

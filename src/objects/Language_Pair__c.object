@@ -63,6 +63,17 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Char_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Char Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Excluded__c</fullName>
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
@@ -80,6 +91,95 @@
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Field__c</fullName>
+        <externalId>false</externalId>
+        <label>Field</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>AGR</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>BIZT</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>ELEKTR</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>ÉLELM</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>ENERG</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>ÉPIP</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>EÜ</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>PÜ</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>GAZD</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>GÉPIP</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>HR</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>IT</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>JOG</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>KÖRNY</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>KÖZL</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>KULT</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>SAP</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>SZÁLL</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>OKIRAT</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Fluency_Level__c</fullName>
@@ -139,7 +239,7 @@
     <fields>
         <fullName>Source_Char_Price__c</fullName>
         <externalId>false</externalId>
-        <label>Source Char Price</label>
+        <label>@DEPR Source Char Price</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -150,7 +250,7 @@
     <fields>
         <fullName>Source_Word_Price__c</fullName>
         <externalId>false</externalId>
-        <label>Source Word Price</label>
+        <label>@DEPR Source Word Price</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -161,7 +261,7 @@
     <fields>
         <fullName>Target_Char_Price__c</fullName>
         <externalId>false</externalId>
-        <label>Target Char Price</label>
+        <label>@DEPR Target Char Price</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -172,7 +272,7 @@
     <fields>
         <fullName>Target_Word_Price__c</fullName>
         <externalId>false</externalId>
-        <label>Target Word Price</label>
+        <label>@DEPR Target Word Price</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -209,6 +309,17 @@
         <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Word_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Word Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
