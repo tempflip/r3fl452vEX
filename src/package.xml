@@ -135,6 +135,7 @@
         <members>Translation__c.Charge_Urgent__c</members>
         <members>Translation__c.Contact__c</members>
         <members>Translation__c.Currency__c</members>
+        <members>Translation__c.Current_EUR_To_HUF__c</members>
         <members>Translation__c.Customer_Amount__c</members>
         <members>Translation__c.Customer_Status__c</members>
         <members>Translation__c.Deposit_Date__c</members>
@@ -146,6 +147,7 @@
         <members>Translation__c.Estimated_Count__c</members>
         <members>Translation__c.Estimated_Due_Date__c</members>
         <members>Translation__c.Estimated_Gross_Price__c</members>
+        <members>Translation__c.Estimated_Price_Eur__c</members>
         <members>Translation__c.Estimated_Price__c</members>
         <members>Translation__c.Estimated_Units__c</members>
         <members>Translation__c.Express__c</members>

@@ -105,6 +105,14 @@
                 <field>Estimated_Price__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Estimated_Price_Eur__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Current_EUR_To_HUF__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Estimated_Gross_Price__c</field>
             </layoutItems>
