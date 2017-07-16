@@ -1,4 +1,4 @@
-public with sharing class FixerRates {
+public with sharing class FixerRates implements Schedulable {
 
 	public static final String ENDPOINT = 'http://api.fixer.io/latest';
 
@@ -8,7 +8,12 @@ public with sharing class FixerRates {
 		Map<String, Decimal> rates;
 	}
 
-	public static void Retrieve() {
+
+	public void execute(SchedulableContext sc) {
+		FixerRates.retrieve();
+	}
+	
+	public static void retrieve() {
         HttpRequest req = new HttpRequest();
         req.setTimeout(120000);
         req.setEndpoint(ENDPOINT);
