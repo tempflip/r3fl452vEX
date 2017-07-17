@@ -60,6 +60,11 @@ public class TriggerHandler {
  
         bind(Translation__c.sObjectType, evt.beforeinsert, new Translation_CurrencyRate());
         bind(Translation__c.sObjectType, evt.beforeupdate, new Translation_CurrencyRate());
+        
+        bind(Translation_Assignment__c.sObjectType, evt.afterInsert, new TranslationAssignment_UpdatePrice());
+        bind(Translation_Assignment__c.sObjectType, evt.afterUpdate, new TranslationAssignment_UpdatePrice());
+
+
 
     }
 

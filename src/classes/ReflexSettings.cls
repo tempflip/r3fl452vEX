@@ -25,6 +25,34 @@ public with sharing class ReflexSettings {
         return setting.Value__c;
     }
 
+
+
+
+    /////////////////////
+    ////////////////////
+    // NEW VALUES
+    ////////////////
+    ////////////////
+
+    public static final String TRANSLATION_ESTIMATED_UNITS_CHARS = 'szóközzel növelt karakter';
+    public static final String TRANSLATION_ESTIMATED_UNITS_WORDS = 'forrásnyelvi szó';
+
+
+    ////////////////////
+    ////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
     // org defaults
     public static final string TRANSLATION_UNIT_CHAR = 'characters';
     public static final string TRANSLATION_UNIT_WORD = 'words';

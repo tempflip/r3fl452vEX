@@ -10,11 +10,13 @@
         <members>ReflexTests</members>
         <members>SobjectExtension</members>
         <members>SobjectTrigger</members>
+        <members>TranslationAssignmentService</members>
         <members>TranslationAssignmentTrigger</members>
         <members>TranslationAssignment_DocumentList</members>
         <members>TranslationAssignment_DocumentListTest</members>
         <members>TranslationAssignment_Rejected</members>
         <members>TranslationAssignment_RejectedTest</members>
+        <members>TranslationAssignment_UpdatePrice</members>
         <members>TranslationFeedbackTest</members>
         <members>TranslationFeedbackTrigger</members>
         <members>TranslationFeedbackTriggerTest</members>
@@ -42,6 +44,7 @@
     </types>
     <types>
         <members>TranslationAssignment_BeforeUpdate</members>
+        <members>TranslationAssignment_Gen</members>
         <members>TranslationFeedback_BeforeInsert</members>
         <members>TranslationFeedback_BeforeUpdate</members>
         <members>Translation_BeforeInsert</members>
