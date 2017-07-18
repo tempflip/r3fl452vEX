@@ -17,6 +17,7 @@ public with sharing class TranslationAssignment_UpdatePrice extends TriggerClass
 													, Translation__c
 													, Translation__r.Estimated_Units__c
 													, Translation__r.Estimated_Count__c
+													, Translation__r.Field__c
 													, Translation__r.Source_Language__c
 													, Translation__r.Target_Language__c
 												FROM Translation_Assignment__c
