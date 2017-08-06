@@ -149,6 +149,9 @@ public with sharing class Translation_ManageAssignment {
         
         Map<Id, TranslatorWrapper> translatorMap = new Map<Id, TranslatorWrapper>();
 
+
+        // selected by language
+        ///////////
         for (Language_Pair__c lPair : lPairList) {
             TranslatorWrapper trw = new TranslatorWrapper(lPair.Translator__r);
             if (lPair.Translator__r.Field__c != null) {
@@ -158,6 +161,28 @@ public with sharing class Translation_ManageAssignment {
             }
             translatorMap.put(trw.translator.Id, trw);
         } 
+
+        // selecting universal translators
+        //////////////////
+        Translator__c[] universalTranslatorList = [SELECT Name
+                                                        ,Field__c
+                                                        ,Editor__c
+                                                        ,Minimum_Wage__c
+                                                        ,Native_Language_Proofreading__c
+                                                        ,Proofreading__c
+                                                        ,Supervisor__c 
+                                                FROM Translator__c
+                                                WHERE Char_Price__c != null];
+
+        for (Translator__c translator : universalTranslatorList) {
+            TranslatorWrapper trw = new TranslatorWrapper(translator);
+            if (translator.Field__c != null) {
+                if ( New Set<String>(translator.Field__c.split(';')).contains(translation.Field__c) ) {
+                    trw.fieldMatches = true;
+                }
+            }
+            translatorMap.put(trw.translator.Id, trw);                    
+        }
 
         translatorWrapperList = translatorMap.values();
     }
@@ -321,8 +346,8 @@ public with sharing class Translation_ManageAssignment {
 
         initializeTranslationAssignmentList();
         initializeTranslationAssWrapperList();
-        //adjustTranslationStatus();
         initializeTranslatorList();
+        initializeTranslation();
         return null;
     }
     

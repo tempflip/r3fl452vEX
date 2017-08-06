@@ -34,7 +34,7 @@
 </style> 
  
     <apex:pageMessages ></apex:pageMessages>
-    <apex:sectionHeader title="{!translation.Name}" subtitle="Manage Translation Assignments"/>
+    <apex:sectionHeader title="{!translation.Name}" subtitle="Megbízás Kezelése"/>
     
     <apex:form id="mainForm">
         <apex:pageBlock title="Megrendelés információk" mode="mainDetail">
@@ -225,7 +225,7 @@
                     <apex:outputField value="{!t.translator.Name}" />
           
                     <apex:facet name="header">    
-                        Name
+                        Név
                     </apex:facet>
                 </apex:column>
 
@@ -233,7 +233,7 @@
                     <apex:image value="/img/msg_icons/confirm16.png" rendered="{!t.fieldMatches == true || translation.Field__c == null}"/>
                     <apex:image value="/img/msg_icons/error16.png" rendered="{!t.fieldMatches != true && translation.Field__c != null}"/>
                     <apex:facet name="header">
-                        Field Professional
+                        Szakember
                     </apex:facet> 
                 </apex:column>
 
@@ -243,7 +243,7 @@
                             <apex:commandLink value="" action="{!addTranslator}">
                                 <apex:param name="translatorId" value="{!t.translator.Id}"/>                    
                                 <apex:image value="/img/icon/questions16.png" />
-                                 Add as Translator &nbsp;
+                                 Hozzáad Fordítóként &nbsp;
                             </apex:commandLink>
                         </span>
                     </apex:outputPanel>
@@ -253,7 +253,7 @@
                             <apex:commandLink value="" action="{!addProofreader}" >
                                 <apex:param name="translatorId" value="{!t.translator.Id}"/>
                                 <apex:image value="/img/msg_icons/confirm16.png" />
-                                 Add as Proofreader &nbsp;
+                                 Hozzáad Lektorként &nbsp;
                             </apex:commandLink>
                         </span>
                     </apex:outputPanel>
@@ -297,7 +297,7 @@
                 <apex:column >
                     {!t.translator.Minimum_Wage__c}
                     <apex:facet name="header">
-                        Minimum Wage    
+                        Alapár    
                     </apex:facet>
                 </apex:column>
             </apex:pageBlockTable>
@@ -353,7 +353,7 @@
                             <apex:outputText value="{!f.Translator__r.Name}" rendered="{!f.Translator__r.Name != null}"/>
                             <apex:outputText value="General Rating" rendered="{!f.Translator__r.Name == null}"/>
                        <apex:facet name="header">
-                           Translator
+                           Fordító
                        </apex:facet>
                        <apex:facet name="footer">
                            <apex:outputPanel >
@@ -372,17 +372,17 @@
                         
                         <apex:inputField value="{!f.Task__c}"/>
                         <apex:facet name="header">
-                           Task
+                           Feladat
                         </apex:facet>
                         <apex:facet name="footer">
-                            <apex:commandButton value="Add and Rate Translator" action="{!addFeedback}"/>
+                            <apex:commandButton value="Fordító értékelés hozzáadása" action="{!addFeedback}"/>
                         </apex:facet>
                     </apex:column>  
 
                     <apex:column >
                         <apex:inputField value="{!f.Type__c}"/>
                         <apex:facet name="header">
-                           Rating Type
+                           Értékelés Típusa
                         </apex:facet>
                     </apex:column>  
                    
@@ -391,7 +391,7 @@
                                 <apex:selectOptions value="{!ratingOptions}" />
                             </apex:selectList>
                        <apex:facet name="header">
-                           Customer Experience
+                           Ügyfél visszajelzés
                        </apex:facet>
                     </apex:column> 
                                                
@@ -400,7 +400,7 @@
                                 <apex:selectOptions value="{!ratingOptions}" />
                             </apex:selectList>
                        <apex:facet name="header">
-                           Quality
+                           Minőség
                        </apex:facet>
                     </apex:column>    
                                    
@@ -410,7 +410,7 @@
                                 <apex:selectOptions value="{!ratingOptions}" />
                             </apex:selectList>  
                        <apex:facet name="header">
-                           Reliability
+                           Megbízhatóság
                        </apex:facet>
                     </apex:column>  
                                                             
@@ -419,7 +419,7 @@
                                 <apex:selectOptions value="{!ratingOptions}" />
                             </apex:selectList>
                        <apex:facet name="header">
-                           Communication
+                           Kommunikáció
                        </apex:facet>
                    </apex:column>
             </apex:pageBlockTable>
