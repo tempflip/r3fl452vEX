@@ -306,9 +306,6 @@ public with sharing class Translation_ManageAssignment {
         a.Translator__c = Id;
         a.Task__c = Task;
         a.Estimated_Count__c = translation.Estimated_Count__c;
-        Decimal minimalWage = defaultZero([SELECT Minimum_Wage__c FROM Translator__c WHERE Id = :Id LIMIT 1].Minimum_Wage__c);
-        Decimal estimatedWage = defaultZero(calculateTranslatorPrice(a));
-        a.Translator_Price__c = minimalWage > estimatedWage ? minimalWage : estimatedWage;
         
         if (translation.Due_Date__c != null) {
             DateTime traDueDate = translation.Due_Date__c - Integer.valueOf(ReflexSettings.getSettingValue('DAYS_BEFORE_DUE_DATE'));
@@ -322,11 +319,9 @@ public with sharing class Translation_ManageAssignment {
             addErrorMessage('Internal error:  ' + e);
         }
 
-        triggerTranslateRollupAssignment();
-
         initializeTranslationAssignmentList();
         initializeTranslationAssWrapperList();
-        adjustTranslationStatus();
+        //adjustTranslationStatus();
         initializeTranslatorList();
         return null;
     }
@@ -369,6 +364,7 @@ public with sharing class Translation_ManageAssignment {
         return null;
     }
 
+    //@DEPR
     public void adjusttranslationStatus() {
         //translation status
         if (translationAssignmentList.isEmpty()) {

@@ -37,32 +37,32 @@
     <apex:sectionHeader title="{!translation.Name}" subtitle="Manage Translation Assignments"/>
     
     <apex:form id="mainForm">
-        <apex:pageBlock title="Available Translators" mode="mainDetail">
+        <apex:pageBlock title="Megrendelés információk" mode="mainDetail">
             <apex:pageBlockSection title="Job Information" collapsible="false">
                
                 <apex:outputField value="{!translation.Source_Language__c}"/>
+                <apex:outputField value="{!translation.Estimated_Price__c}"/>
 
                 <apex:outputField value="{!translation.Target_Language__c}"/>
+                <apex:outputField value="{!translation.Translator_Wage__c}"/>    
 
                 <apex:outputField value="{!translation.Field__c}"/>                   
-                
-         
-                <apex:outputText value="{!translation.Estimated_Price__c} {!translation.Currency__c}" label="Price" />
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+
                 <apex:outputField value="{!translation.Proofreading__c}"/>
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>                
                 
-                <apex:outputText value="{!translation.Translator_Wage__c} {!translation.Currency__c}" label="Translator Wage"/>    
                 <apex:outputField value="{!translation.Native_Language_Proofreading__c}"/>    
-                
-                
                 <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                
                 <apex:outputField value="{!translation.Proofreading_Only__c}"/>
-                
                 <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                
                 <apex:outputField value="{!translation.Certified__c}"/>
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
                 
-                
-                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>    
                 <apex:outputField value="{!translation.Editing__c}"/>
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>    
                 
                            
             </apex:pageBlockSection>
@@ -119,8 +119,8 @@
 
 
 
-        
-        <apex:pageBlock mode="mainDetail" title="Job Assignments">
+
+        <apex:pageBlock mode="mainDetail" title="Fordítói Megbízások">
             
 
 
@@ -182,8 +182,8 @@
 
             
             <apex:pageBlockButtons location="bottom">
-                <apex:commandButton value="Update Assignments" action="{!updateAssignments}" />
-                <apex:commandButton value="Remove Selected" action="{!deleteAssignment}" />
+                <apex:commandButton value="Mentés" action="{!updateAssignments}" />
+                <apex:commandButton value="Kiválasztott törlése" action="{!deleteAssignment}" />
             </apex:pageBlockButtons>
         
         </apex:pageBlock>
@@ -218,7 +218,7 @@
 
 
 
-        <apex:pageBlock title="Available Translators" mode="mainDetail">
+        <apex:pageBlock title="Fordítók" mode="mainDetail">
             <apex:pageBlockTable value="{!translatorWrapperList}" var="t">
 
                 <apex:column >
@@ -341,7 +341,7 @@
 
 
         
-        <apex:pageBlock title="Feedback" mode="mainDetail">
+        <apex:pageBlock title="Értékelés" mode="mainDetail">
             <apex:pageBlockButtons location="bottom">
                 <apex:commandButton value="Update Rating" action="{!rateTranslators}"/>
             </apex:pageBlockButtons>

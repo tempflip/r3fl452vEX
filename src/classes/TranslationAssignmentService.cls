@@ -48,6 +48,14 @@ public with sharing class TranslationAssignmentService {
 
 		ta.Translator_Price__c = (ta.Estimated_Count__c != null ? ta.Estimated_Count__c : 0) 
 								* unitPrice;
+
+		// minimum wage update
+		if (tra.Minimum_Wage__c != null) {
+			if (tra.Minimum_Wage__c > ta.Translator_Price__c) {
+				ta.Translator_Price__c = tra.Minimum_Wage__c;
+			}
+		}
+
 		return ta;
 	}
 }
