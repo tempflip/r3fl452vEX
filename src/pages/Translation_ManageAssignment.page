@@ -40,20 +40,11 @@
         <apex:pageBlock title="Available Translators" mode="mainDetail">
             <apex:pageBlockSection title="Job Information" collapsible="false">
                
-                <apex:outputField value="{!translation.Assignment_Status__c}"/>  
                 <apex:outputField value="{!translation.Source_Language__c}"/>
 
-                <apex:outputField value="{!translation.Translating_Status__c}"/>   
                 <apex:outputField value="{!translation.Target_Language__c}"/>
 
-                <apex:outputField value="{!translation.Proofreading_Status__c}"/>  
                 <apex:outputField value="{!translation.Field__c}"/>                   
-                
-                <apex:outputField value="{!translation.Editing_Status__c}"/>   
-                <apex:outputField value="{!translation.Express__c}"/>
-
-                <apex:outputField value="{!translation.Supervising_Status__c}"/> 
-                <apex:outputField value="{!translation.Urgent__c}"/>
                 
          
                 <apex:outputText value="{!translation.Estimated_Price__c} {!translation.Currency__c}" label="Price" />
@@ -86,37 +77,62 @@
             </apex:pageBlockSection>
         </apex:pageBlock>
         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
         <apex:pageBlock mode="mainDetail" title="Job Assignments">
-            <apex:pageBlockSection columns="1">
-                <apex:outputPanel id="docPanel">
-                    Folder:
-                    <apex:selectList value="{!selectedFolderId}" size="1" style="width: 300px;">
-                        <apex:selectOptions value="{!folderList}" />
-                        <apex:actionSupport event="onchange" action="{!folderChange}" rerender="docPanel" status="folderChange"/>
-                    </apex:selectList>
-                    
-                    Document:
-                    
-                    <apex:selectList value="{!selectedDocumentId}" size="1" style="width: 300px;">
-                        <apex:selectOptions value="{!documentList}" />
-                    </apex:selectList>
-                    
-                    <apex:actionStatus id="folderChange">
-                        <apex:facet name="start">
-                            <apex:image value="/img/loading.gif" />
-                        </apex:facet>                       
-                    </apex:actionStatus>
-                    
-                </apex:outputPanel>
-                <p/>
-            </apex:pageBlockSection>
             
 
 
+
+        
+
                 <apex:repeat value="{!translationAssWrapperList}" var="a">
+
+
                     <table class="translator-table">
                         <tr style="background-color: #E4E4EE; font-size: 120%;">
-                            <td style="width: 30%">
+                            <td>
                                 <apex:inputCheckbox value="{!a.selected}"/>
                                 &nbsp;
                                 <apex:outputField value="{!a.translationAssignment.Translator__c}"/>
@@ -125,6 +141,15 @@
                                     Rejection Reason:
                                     {!a.translationAssignment.Rejection_Reason__c}
                                 </apex:outputPanel>
+                            </td>
+
+                            <td>
+                                <apex:image value="/img/icon/custom51_100/pencil16.png"/>
+                                Mennyiségi egység:
+                                &nbsp;
+                                <apex:inputField value="{!a.translationAssignment.Estimated_Count__c}" style="width: 4.5em;"/>
+                                &nbsp;
+
                             </td>
 
                             <td>
@@ -140,107 +165,18 @@
 
                             <td>
                                 
-                                Due Date:
+                                Határidő:
                                 <apex:inputField value="{!a.translationAssignment.Due_Date__c}"/>                        
-                            </td>   
-                            <td>
-                                <div class="message-div">
-                                    <span class="show-message action-button">Set/Show Message</span>
-                                    <div>
-                                        <br/>
-                                        <apex:inputTextarea value="{!a.translationAssignment.Message__c}" cols="50" rows="6"/>
-                                    </div>
-                                </div>
-                                <p/>
                             </td>
+
+                            <td>
+                                <apex:outputField value="{!a.translationAssignment.Translator_Price__c}" />
+
+                            </td>
+
+
                         </tr>
-                        <tr style="font-size: 120%;">
-                            <td>
-                                <apex:image value="/img/icon/custom51_100/pencil16.png"/>
-                                Estimated Count
-                                &nbsp;
-                                <apex:inputField value="{!a.translationAssignment.Estimated_Count__c}" style="width: 4.5em;"/>
-                                &nbsp;
-                                <apex:image value="/img/icon/custom51_100/pencil16.png"/>
-                                Actual Count
-                                &nbsp;
-                                <apex:inputField value="{!a.translationAssignment.Actual_Count__c}" style="width: 4.5em;"/>                               
-                            </td>
-                           
-                            <td>
-                                <apex:image value="/img/icon/cash16.png"/>
-                                &nbsp;
-                                <apex:inputField value="{!a.translationAssignment.Translator_Price__c}" style="width: 6em;"/>
-                                {!translation.Currency__c}
 
-                                <apex:inputCheckbox value="{!a.translationAssignment.Postpaid__c}">
-                                    <apex:actionSupport event="onchange" action="{!doNothing}" reRender="postPaidPanel"/>
-                                </apex:inputCheckbox>
-                                Postpaid
-                            </td>
-                            <td>
-                                <apex:outputPanel id="postPaidPanel">
-                                    <apex:outputPanel rendered="{!a.translationAssignment.Postpaid__c}">
-                                        <apex:inputField value="{!a.translationAssignment.Unit_Wage__c}" style="width: 3em;" />
-                                        &nbsp;
-                                        <apex:outputText value="{!translation.Currency__c} / unit" />
-                                        
-                                        <apex:commandLink action="{!updateUnitWage}">
-                                            <apex:param name="assignmentId" value="{!a.translationAssignment.Id}"/>
-                                            <span style="font-size: 80%;">
-                                                update
-                                            </span>
-                                        </apex:commandLink>
-                                    </apex:outputPanel>
-                                </apex:outputPanel>                            
-                            </td>
-                        </tr>
-                        
-                        <tr>    
-                        
-                            <td colspan="2">
-                                <apex:outputPanel >
-                                    <apex:repeat value="{!a.documents}" var="doc">
-                                        <span class="document-label">
-                                            <apex:commandLink action="{!removeDocumentFromAssignment}">
-                                                <apex:param name="assignmentId" value="{!a.translationAssignment.Id}"/>
-                                                <apex:param name="documentId" value="{!doc.Id}"/>
-                                                X 
-                                            </apex:commandLink>
-                                            {!doc.Name}
-                                        </span>
-                                    </apex:repeat>
-                                    <p/>
-                                    <span class="action-button">
-                                        <apex:commandLink action="{!addDocumentToAssignment}" value="">
-                                            <apex:param name="assignmentId" value="{!a.translationAssignment.Id}"/>   
-                                            <apex:image value="/img/icon/orderBell16.png" />
-                                            Add Selected Document
-                                        </apex:commandlink>
-                                    </span>
-                                    
-                                    <span class="action-button">
-                                        <apex:commandLink value="" action="{!sendDocuments}">
-                                            <apex:param name="assignmentId" value="{!a.translationAssignment.Id}"/>                    
-                                             <apex:image value="/img/icon/mail16.png" />
-                                             Send Docs in Email
-                                        </apex:commandLink>  
-                                    </span>                                     
-                                    
-                                </apex:outputPanel>
-                            </td>
-                            <td>
-
-
-             
-                
-                                <!--
-                                <apex:outputField value="{!a.translationAssignment.Started__c}"/>
-         
-                                <apex:outputField value="{!a.translationAssignment.Finished__c}"/>
-                                -->
-                         </td>
-                     </tr>
                 </table>
             </apex:repeat>
 
@@ -252,11 +188,41 @@
         
         </apex:pageBlock>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <apex:pageBlock title="Available Translators" mode="mainDetail">
             <apex:pageBlockTable value="{!translatorWrapperList}" var="t">
 
                 <apex:column >
-                    <apex:outputField value="{!t.lpair.Translator__r.Name}" />
+                    <apex:outputField value="{!t.translator.Name}" />
           
                     <apex:facet name="header">    
                         Name
@@ -275,24 +241,25 @@
                     <apex:outputPanel rendered="{!translation.Proofreading_Only__c == false}">
                         <span class="action-button">
                             <apex:commandLink value="" action="{!addTranslator}">
-                                <apex:param name="translatorId" value="{!t.lpair.Translator__c}"/>                    
+                                <apex:param name="translatorId" value="{!t.translator.Id}"/>                    
                                 <apex:image value="/img/icon/questions16.png" />
                                  Add as Translator &nbsp;
                             </apex:commandLink>
                         </span>
                     </apex:outputPanel>
                     
-                    <apex:outputPanel rendered="{!t.lpair.Translator__r.Proofreading__c == true && (translation.Proofreading__c == true || translation.Proofreading_Only__c == true)}">
+                    <apex:outputPanel rendered="{!t.translator.Proofreading__c == true && (translation.Proofreading__c == true || translation.Proofreading_Only__c == true)}">
                         <span class="action-button">
                             <apex:commandLink value="" action="{!addProofreader}" >
-                                <apex:param name="translatorId" value="{!t.lpair.Translator__c}"/>
+                                <apex:param name="translatorId" value="{!t.translator.Id}"/>
                                 <apex:image value="/img/msg_icons/confirm16.png" />
                                  Add as Proofreader &nbsp;
                             </apex:commandLink>
                         </span>
                     </apex:outputPanel>
 
-                    <apex:outputPanel rendered="{!t.lpair.Translator__r.Native_Language_Proofreading__c == true && translation.Native_Language_Proofreading__c == true}">
+                    <!--
+                    <apex:outputPanel rendered="{!t.translator.Native_Language_Proofreading__c == true && translation.Native_Language_Proofreading__c == true}">
                         <span class="action-button">
                             <apex:commandLink value="" action="{!addProofreader}" >
                                 <apex:param name="translatorId" value="{!t.lpair.Translator__c}"/>
@@ -301,7 +268,9 @@
                             </apex:commandLink>
                         </span>
                     </apex:outputPanel>
-                    
+                    -->
+
+                    <!--
                     <apex:outputPanel rendered="{!t.lpair.Translator__r.Supervisor__c == true && translation.Proofreading__c == false && translation.Native_Language_Proofreading__c == false && translation.Proofreading_Only__c == false}">
                         <span class="action-button">
                             <apex:commandLink value="" action="{!addSupervisor}" >
@@ -311,7 +280,8 @@
                             </apex:commandLink>
                         </span>
                     </apex:outputPanel>
-                    
+                    -->
+                    <!--
                     <apex:outputPanel rendered="{!t.lpair.Translator__r.Editor__c == true && translation.Editing__c == true}">
                         <span class="action-button">
                             <apex:commandLink value="" action="{!addEditor}">
@@ -321,16 +291,53 @@
                             </apex:commandLink>
                         </span>
                     </apex:outputPanel>
+                    -->
                 </apex:column>
             
                 <apex:column >
-                    {!t.lpair.Translator__r.Minimum_Wage__c}
+                    {!t.translator.Minimum_Wage__c}
                     <apex:facet name="header">
                         Minimum Wage    
                     </apex:facet>
                 </apex:column>
             </apex:pageBlockTable>
         </apex:pageBlock>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         

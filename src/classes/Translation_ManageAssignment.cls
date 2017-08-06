@@ -18,13 +18,15 @@ public with sharing class Translation_ManageAssignment {
     public Map<Id, Language_Pair__c[]> TranslatorLanguagePairMap;
 
     public class TranslatorWrapper {
-        public Language_Pair__c lPair{get; set;}
+        //public Language_Pair__c lPair{get; set;}
+        public Translator__c translator {get; set;}
         public Boolean selected {get; set;}
         public Boolean fieldMatches {get; set;}
-        public TranslatorWrapper(Language_Pair__c lPair) {
-                this.lpair = lpair;
+        public TranslatorWrapper(Translator__c tr) {
+            //this.lpair = lpair;
             this.selected = false;
             fieldMatches = false;
+            this.translator = tr;
         }
     }
 
@@ -53,7 +55,7 @@ public with sharing class Translation_ManageAssignment {
         initializeDocumentMap();
         initializeDocumentList();
         initializeTranslatorWrapperList();
-        initializeTranslationAssignmentList();
+        //initializeTranslationAssignmentList();
         initializeTranslationAssWrapperList();
         initializeRatingOptions();
         //initializeStatusInfo();
@@ -144,16 +146,20 @@ public with sharing class Translation_ManageAssignment {
     }
 
     public void initializeTranslatorWrapperList() {
-        translatorWrapperList = new TranslatorWrapper[]{};
+        
+        Map<Id, TranslatorWrapper> translatorMap = new Map<Id, TranslatorWrapper>();
+
         for (Language_Pair__c lPair : lPairList) {
-            TranslatorWrapper translatorWrapper = new TranslatorWrapper(lPair);
+            TranslatorWrapper trw = new TranslatorWrapper(lPair.Translator__r);
             if (lPair.Translator__r.Field__c != null) {
                 if ( New Set<String>(lPair.Translator__r.Field__c.split(';')).contains(translation.Field__c) ) {
-                    translatorWrapper.fieldMatches = true;
+                    trw.fieldMatches = true;
                 }
             }
-            translatorWrapperList.add(translatorWrapper); 
+            translatorMap.put(trw.translator.Id, trw);
         } 
+
+        translatorWrapperList = translatorMap.values();
     }
 
     public void initializeTranslationAssignmentList() {
@@ -191,6 +197,7 @@ public with sharing class Translation_ManageAssignment {
     }
 
     public void initializetranslationAssWrapperList() {
+        initializeTranslationAssignmentList();
         translationAssWrapperList = new translationAssWrapper[]{};
         for (Translation_Assignment__c a : translationAssignmentList) {
                 TranslationAssWrapper translationAssWrapper = new translationAssWrapper(a);
@@ -336,37 +343,25 @@ public with sharing class Translation_ManageAssignment {
         } catch (system.exception e) {
             addErrorMessage('Internal error:  ' + e);
         }        
-        triggerTranslateRollupAssignment();
-        initializeTranslationAssignmentList();
+        initializeTranslation();
         initializeTranslationAssWrapperList();
-        adjustTranslationStatus(); 
         initializeTranslatorList();
         return null;        
     }
 
     public PageReference updateAssignments() {
-
-        // updating the price calculation
-        Map<Id, Translator__c> translatorMap = new Map<Id, Translator__c>([SELECT Minimum_Wage__c FROM Translator__c]);
-        for (Translation_Assignment__c tra : translationAssignmentList) {
-                if (tra.Postpaid__c) {
-                        tra.Translator_Price__c = defaultZero(tra.Unit_Wage__c) * defaultZero(tra.Estimated_Count__c);
-                        continue;
-                }
-            //Decimal minimalWage = defaultZero(translatorMap.get(tra.Translator__c).Minimum_Wage__c);
-            //Decimal estimatedWage = defaultZero(calculateTranslatorPrice(tra));
-            //tra.Translator_Price__c = minimalWage > estimatedWage ? minimalWage : estimatedWage;
-        }
         try {
             update translationAssignmentList;
         } 
         catch (system.exception e) {
             addErrorMessage('Internal error: ' + e);
         }
-        triggerTranslateRollupAssignment();
-
+        initializeTranslation();
+        initializeTranslationAssWrapperList();
         return null;
     }
+
+
 
     public PageReference folderChange() {
         initializeDocumentMap();
