@@ -116,6 +116,7 @@
         <members>Translation_Assignment__c.Estimated_Count__c</members>
         <members>Translation_Assignment__c.Express__c</members>
         <members>Translation_Assignment__c.Finished__c</members>
+        <members>Translation_Assignment__c.Language_Pair__c</members>
         <members>Translation_Assignment__c.Message__c</members>
         <members>Translation_Assignment__c.Postpaid__c</members>
         <members>Translation_Assignment__c.Rejection_Reason__c</members>

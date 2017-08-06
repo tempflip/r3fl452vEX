@@ -193,7 +193,10 @@
         <fields>NAME</fields>
         <fields>From__c</fields>
         <fields>To__c</fields>
-        <fields>Excluded__c</fields>
+        <fields>Base_Price__c</fields>
+        <fields>Char_Price__c</fields>
+        <fields>Word_Price__c</fields>
+        <fields>Field__c</fields>
         <relatedList>Language_Pair__c.Translator__c</relatedList>
         <sortField>NAME</sortField>
         <sortOrder>Asc</sortOrder>
