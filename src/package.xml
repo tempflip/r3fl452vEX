@@ -130,9 +130,14 @@
         <members>Translation_Assignment__c.Urgent__c</members>
         <members>Translation_Feedback__c.Communication__c</members>
         <members>Translation_Feedback__c.Customer_Experience__c</members>
+        <members>Translation_Feedback__c.Fluency_Level__c</members>
+        <members>Translation_Feedback__c.Grammar__c</members>
         <members>Translation_Feedback__c.Quality__c</members>
+        <members>Translation_Feedback__c.Rating__c</members>
         <members>Translation_Feedback__c.Reliability__c</members>
+        <members>Translation_Feedback__c.Spelling__c</members>
         <members>Translation_Feedback__c.Task__c</members>
+        <members>Translation_Feedback__c.Text_Feedbaack__c</members>
         <members>Translation_Feedback__c.Translation__c</members>
         <members>Translation_Feedback__c.Translator__c</members>
         <members>Translation_Feedback__c.Type__c</members>
