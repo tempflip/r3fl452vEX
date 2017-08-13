@@ -145,7 +145,7 @@
 
                             <td>
                                 <apex:image value="/img/icon/custom51_100/pencil16.png"/>
-                                Mennyiségi egység:
+                                Mennyiség:
                                 &nbsp;
                                 <apex:inputField value="{!a.translationAssignment.Estimated_Count__c}" style="width: 4.5em;"/>
                                 &nbsp;
