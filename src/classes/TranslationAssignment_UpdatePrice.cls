@@ -9,6 +9,7 @@ public with sharing class TranslationAssignment_UpdatePrice extends TriggerClass
 		
 		Translation_Assignment__c[] taList = [SELECT Name
 													, Estimated_Count__c
+													, Task__c
 													, Translator__c
 													, Translator__r.Name
 													, Translator__r.Char_Price__c

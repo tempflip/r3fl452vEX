@@ -46,9 +46,18 @@ public with sharing class TranslationAssignmentService {
 			ta.Language_Pair__c = lpSelected.Id;
 		}
 
-		ta.Translator_Price__c = (ta.Estimated_Count__c != null ? ta.Estimated_Count__c : 0) 
+
+				
+
+		Decimal finalTranslatorPrice = (ta.Estimated_Count__c != null ? ta.Estimated_Count__c : 0) 
 								* unitPrice;
 
+		// proofreading multiplier
+		if (ta.Task__c == ReflexSettings.TASK_PROOFREADING) {
+			finalTranslatorPrice *= ReflexSettings.PROOFREADING_MULTIPLIER; 
+		}
+
+		ta.Translator_Price__c = finalTranslatorPrice;
 		// minimum wage update
 		if (tra.Minimum_Wage__c != null) {
 			if (tra.Minimum_Wage__c > ta.Translator_Price__c) {

@@ -248,7 +248,7 @@
                         </span>
                     </apex:outputPanel>
                     
-                    <apex:outputPanel rendered="{!t.translator.Proofreading__c == true && (translation.Proofreading__c == true || translation.Proofreading_Only__c == true)}">
+                    <apex:outputPanel rendered="{!t.translator.Proofreading__c == true && (translation.Proofreading__c == true || translation.Proofreading_Only__c == true || translation.Native_Language_Proofreading__c == true)}">
                         <span class="action-button">
                             <apex:commandLink value="" action="{!addProofreader}" >
                                 <apex:param name="translatorId" value="{!t.translator.Id}"/>

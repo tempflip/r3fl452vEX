@@ -164,6 +164,10 @@ public with sharing class Translation_ManageAssignment {
 
         // selecting universal translators
         //////////////////
+
+        // OKEY so NO UNIVERSAL TRANSLATORS so far
+        ///////////////
+        /*
         Translator__c[] universalTranslatorList = [SELECT Name
                                                         ,Field__c
                                                         ,Editor__c
@@ -183,7 +187,7 @@ public with sharing class Translation_ManageAssignment {
             }
             translatorMap.put(trw.translator.Id, trw);                    
         }
-
+        */
         translatorWrapperList = translatorMap.values();
     }
 
