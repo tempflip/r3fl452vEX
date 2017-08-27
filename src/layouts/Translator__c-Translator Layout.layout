@@ -150,14 +150,27 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Rating</label>
+        <label>Értékelés</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Quality_Rating__c</field>
+                <behavior>Readonly</behavior>
+                <field>Rating__c</field>
             </layoutItems>
         </layoutColumns>
-        <layoutColumns/>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Spelling__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Grammar__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Fluency_Level__c</field>
+            </layoutItems>
+        </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
@@ -218,6 +231,12 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>Rating__c</fields>
+        <fields>Type__c</fields>
+        <fields>Task__c</fields>
+        <fields>Spelling__c</fields>
+        <fields>Grammar__c</fields>
+        <fields>Fluency_Level__c</fields>
         <relatedList>Translation_Feedback__c.Translator__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>

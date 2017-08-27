@@ -27,8 +27,8 @@
                 <field>Fluency_Level__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Rating__c</field>
+                <behavior>Edit</behavior>
+                <field>Text_Feedbaack__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -37,12 +37,12 @@
                 <field>Translation__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Translator__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Text_Feedbaack__c</field>
+                <behavior>Readonly</behavior>
+                <field>Rating__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>

@@ -446,6 +446,56 @@
         <visibleLines>10</visibleLines>
     </fields>
     <fields>
+        <fullName>Fluency_Level_Sum__c</fullName>
+        <externalId>false</externalId>
+        <label>Fluency Level Sum</label>
+        <summarizedField>Translation_Feedback__c.Fluency_Level__c</summarizedField>
+        <summaryForeignKey>Translation_Feedback__c.Translator__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Fluency_Level__c</fullName>
+        <externalId>false</externalId>
+        <formula>Fluency_Level_Sum__c / Rating_Count__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Stílus - Gördülékenység</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Grammar_Sum__c</fullName>
+        <externalId>false</externalId>
+        <label>Grammar Sum</label>
+        <summarizedField>Translation_Feedback__c.Grammar__c</summarizedField>
+        <summaryForeignKey>Translation_Feedback__c.Translator__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Grammar__c</fullName>
+        <externalId>false</externalId>
+        <formula>Grammar_Sum__c / Rating_Count__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Nyelvhelyesség</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Interpreter__c</fullName>
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
@@ -516,6 +566,41 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Rating_Count__c</fullName>
+        <externalId>false</externalId>
+        <label>Rating Count</label>
+        <summaryForeignKey>Translation_Feedback__c.Translator__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Rating_Sum__c</fullName>
+        <externalId>false</externalId>
+        <label>Rating Sum</label>
+        <summarizedField>Translation_Feedback__c.Rating__c</summarizedField>
+        <summaryForeignKey>Translation_Feedback__c.Translator__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Rating__c</fullName>
+        <externalId>false</externalId>
+        <formula>Rating_Sum__c / Rating_Count__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Rating</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Secondary_Email__c</fullName>
         <externalId>false</externalId>
         <label>Másodlagos email</label>
@@ -543,6 +628,31 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Spelling_Sum__c</fullName>
+        <externalId>false</externalId>
+        <label>Spelling Sum</label>
+        <summarizedField>Translation_Feedback__c.Spelling__c</summarizedField>
+        <summaryForeignKey>Translation_Feedback__c.Translator__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Spelling__c</fullName>
+        <externalId>false</externalId>
+        <formula>Spelling_Sum__c / Rating_Count__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Helyesírás</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>

@@ -223,6 +223,10 @@
         <members>Translator__c.Fax__c</members>
         <members>Translator__c.Field_Excluded__c</members>
         <members>Translator__c.Field__c</members>
+        <members>Translator__c.Fluency_Level_Sum__c</members>
+        <members>Translator__c.Fluency_Level__c</members>
+        <members>Translator__c.Grammar_Sum__c</members>
+        <members>Translator__c.Grammar__c</members>
         <members>Translator__c.Interpreter__c</members>
         <members>Translator__c.Minimum_Wage__c</members>
         <members>Translator__c.Mobile__c</members>
@@ -230,9 +234,14 @@
         <members>Translator__c.Phone__c</members>
         <members>Translator__c.Proofreading__c</members>
         <members>Translator__c.Quality_Rating__c</members>
+        <members>Translator__c.Rating_Count__c</members>
+        <members>Translator__c.Rating_Sum__c</members>
+        <members>Translator__c.Rating__c</members>
         <members>Translator__c.Secondary_Email__c</members>
         <members>Translator__c.Secondary_Mobile__c</members>
         <members>Translator__c.Skype_Id__c</members>
+        <members>Translator__c.Spelling_Sum__c</members>
+        <members>Translator__c.Spelling__c</members>
         <members>Translator__c.Supervisor__c</members>
         <members>Translator__c.Word_Price__c</members>
         <members>Translator__c.imp_languages__c</members>
