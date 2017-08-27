@@ -265,6 +265,7 @@
         <sortField>NAME</sortField>
         <sortOrder>Desc</sortOrder>
     </relatedLists>
+    <!--
     <relatedLists>
         <fields>NAME</fields>
         <fields>Translator__c</fields>
@@ -276,7 +277,7 @@
         <fields>Text_Feedbaack__c</fields>
         <fields>CREATEDBY_USER</fields>
         <relatedList>Translation_Feedback__c.Translation__c</relatedList>
-    </relatedLists>
+    </relatedLists>-->
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>
