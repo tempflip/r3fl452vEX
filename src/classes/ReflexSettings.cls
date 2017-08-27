@@ -37,6 +37,7 @@ public with sharing class ReflexSettings {
     public static final String TRANSLATION_ESTIMATED_UNITS_CHARS = 'szóközzel növelt karakter';
     public static final String TRANSLATION_ESTIMATED_UNITS_WORDS = 'forrásnyelvi szó';
 
+    public static final Decimal PROOFREADING_MULTIPLIER = 0.50;
 
     ////////////////////
     ////////////////////

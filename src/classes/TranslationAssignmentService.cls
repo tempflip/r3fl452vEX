@@ -49,13 +49,18 @@ public with sharing class TranslationAssignmentService {
 
 		}
 
-		ta.Translator_Price__c = (ta.Estimated_Count__c != null ? ta.Estimated_Count__c : 0) 
+
+				
+
+		Decimal finalTranslatorPrice = (ta.Estimated_Count__c != null ? ta.Estimated_Count__c : 0) 
 								* unitPrice;
 
 		if (ta.Task__c == ReflexSettings.TASK_PROOFREADING && proofreadingMultiplier != null) {
-			ta.Translator_Price__c  *= proofreadingMultiplier;
+			finalTranslatorPrice  *= proofreadingMultiplier;
 		}
 
+
+		ta.Translator_Price__c = finalTranslatorPrice;
 		// minimum wage update
 		if (tra.Minimum_Wage__c != null) {
 			if (tra.Minimum_Wage__c > ta.Translator_Price__c) {

@@ -463,7 +463,7 @@
     <fields>
         <fullName>Estimated_Units__c</fullName>
         <externalId>false</externalId>
-        <label>Mennyiségi egység</label>
+        <label>Mennyiség</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>

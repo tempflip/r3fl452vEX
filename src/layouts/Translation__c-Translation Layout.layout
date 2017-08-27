@@ -268,10 +268,13 @@
     <relatedLists>
         <fields>NAME</fields>
         <fields>Translator__c</fields>
-        <fields>Customer_Experience__c</fields>
-        <fields>Quality__c</fields>
-        <fields>Reliability__c</fields>
-        <fields>Communication__c</fields>
+        <fields>Type__c</fields>
+        <fields>Rating__c</fields>
+        <fields>Spelling__c</fields>
+        <fields>Grammar__c</fields>
+        <fields>Fluency_Level__c</fields>
+        <fields>Text_Feedbaack__c</fields>
+        <fields>CREATEDBY_USER</fields>
         <relatedList>Translation_Feedback__c.Translation__c</relatedList>
     </relatedLists>
     <relatedLists>

@@ -54,7 +54,7 @@
     <fields>
         <fullName>Communication__c</fullName>
         <externalId>false</externalId>
-        <label>Communication</label>
+        <label>@DEPR Cmmunication</label>
         <precision>1</precision>
         <required>false</required>
         <scale>0</scale>
@@ -65,8 +65,30 @@
     <fields>
         <fullName>Customer_Experience__c</fullName>
         <externalId>false</externalId>
-        <label>Customer Experience</label>
+        <label>@DEPR Customer Experience</label>
         <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Fluency_Level__c</fullName>
+        <externalId>false</externalId>
+        <label>Stílus - Gördülékenység</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Grammar__c</fullName>
+        <externalId>false</externalId>
+        <label>Nyelvhelyesség</label>
+        <precision>2</precision>
         <required>false</required>
         <scale>0</scale>
         <trackTrending>false</trackTrending>
@@ -76,7 +98,7 @@
     <fields>
         <fullName>Quality__c</fullName>
         <externalId>false</externalId>
-        <label>Quality</label>
+        <label>@DEPR Quality</label>
         <precision>1</precision>
         <required>false</required>
         <scale>0</scale>
@@ -85,10 +107,34 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Rating__c</fullName>
+        <externalId>false</externalId>
+        <formula>(Spelling__c + Grammar__c + Fluency_Level__c) / 3</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Értékelés</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Reliability__c</fullName>
         <externalId>false</externalId>
-        <label>Reliability</label>
+        <label>@DEPR Reliability</label>
         <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Spelling__c</fullName>
+        <externalId>false</externalId>
+        <label>Helyesírás</label>
+        <precision>2</precision>
         <required>false</required>
         <scale>0</scale>
         <trackTrending>false</trackTrending>
@@ -98,7 +144,7 @@
     <fields>
         <fullName>Task__c</fullName>
         <externalId>false</externalId>
-        <label>Task</label>
+        <label>Feladat</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -121,9 +167,18 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Text_Feedbaack__c</fullName>
+        <externalId>false</externalId>
+        <label>Szöveges visszajelzés</label>
+        <length>2048</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
         <fullName>Translation__c</fullName>
         <externalId>false</externalId>
-        <label>Translation</label>
+        <label>Megrendelés</label>
         <referenceTo>Translation__c</referenceTo>
         <relationshipLabel>Translation Feedbacks</relationshipLabel>
         <relationshipName>Translation_Feedbacks</relationshipName>
@@ -137,7 +192,7 @@
         <fullName>Translator__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
-        <label>Translator</label>
+        <label>Fordító</label>
         <referenceTo>Translator__c</referenceTo>
         <relationshipLabel>Translation Feedbacks</relationshipLabel>
         <relationshipName>Translation_Feedbacks</relationshipName>
@@ -148,7 +203,7 @@
     <fields>
         <fullName>Type__c</fullName>
         <externalId>false</externalId>
-        <label>Type</label>
+        <label>Típus</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -156,15 +211,15 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Proofreader</fullName>
+                    <fullName>Lektor</fullName>
                     <default>false</default>
                 </value>
                 <value>
-                    <fullName>Agency</fullName>
+                    <fullName>Projektvezető</fullName>
                     <default>false</default>
                 </value>
                 <value>
-                    <fullName>Customer</fullName>
+                    <fullName>Megrendelő</fullName>
                     <default>false</default>
                 </value>
             </valueSetDefinition>
