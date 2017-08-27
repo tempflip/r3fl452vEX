@@ -37,6 +37,7 @@ public with sharing class TranslationAssignmentService {
 
 		}
 
+		Decimal proofreadingMultiplier;
 		if (lpSelected != null) {
 			if (!isWords && lpSelected.Char_Price__c != null) {
 				unitPrice = lpSelected.Char_Price__c;
@@ -44,10 +45,16 @@ public with sharing class TranslationAssignmentService {
 				unitPrice = lpSelected.Word_Price__c;
 			}
 			ta.Language_Pair__c = lpSelected.Id;
+			proofreadingMultiplier = lpSelected.Proofreading_Multiplier__c;
+
 		}
 
 		ta.Translator_Price__c = (ta.Estimated_Count__c != null ? ta.Estimated_Count__c : 0) 
 								* unitPrice;
+
+		if (ta.Task__c == ReflexSettings.TASK_PROOFREADING && proofreadingMultiplier != null) {
+			ta.Translator_Price__c  *= proofreadingMultiplier;
+		}
 
 		// minimum wage update
 		if (tra.Minimum_Wage__c != null) {
@@ -55,6 +62,7 @@ public with sharing class TranslationAssignmentService {
 				ta.Translator_Price__c = tra.Minimum_Wage__c;
 			}
 		}
+
 
 		return ta;
 	}

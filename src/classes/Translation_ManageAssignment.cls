@@ -152,8 +152,13 @@ public with sharing class Translation_ManageAssignment {
 
         // selected by language
         ///////////
+
+        system.debug('+++ lPairList ' + lPairList);
+
         for (Language_Pair__c lPair : lPairList) {
+            if (lPair.Translator__r == null) continue;
             TranslatorWrapper trw = new TranslatorWrapper(lPair.Translator__r);
+
             if (lPair.Translator__r.Field__c != null) {
                 if ( New Set<String>(lPair.Translator__r.Field__c.split(';')).contains(translation.Field__c) ) {
                     trw.fieldMatches = true;

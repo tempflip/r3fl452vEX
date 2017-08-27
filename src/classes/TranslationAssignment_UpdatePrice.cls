@@ -2,6 +2,7 @@ public with sharing class TranslationAssignment_UpdatePrice extends TriggerClass
 
     public override Boolean getIsToProcess(SObject sObjectOld, SObject sObjectNew) {
 		return sObjectOld.get('Estimated_Count__c') != sObjectNew.get('Estimated_Count__c')
+			|| sObjectOld.get('Task__c') != sObjectNew.get('Task__c')
 			;
 	}	
 
@@ -9,6 +10,7 @@ public with sharing class TranslationAssignment_UpdatePrice extends TriggerClass
 		
 		Translation_Assignment__c[] taList = [SELECT Name
 													, Estimated_Count__c
+													, Task__c
 													, Translator__c
 													, Translator__r.Name
 													, Translator__r.Char_Price__c
@@ -39,6 +41,7 @@ public with sharing class TranslationAssignment_UpdatePrice extends TriggerClass
 																		, From__c
 																		, To__c
 																		, Word_Price__c
+																		, Proofreading_Multiplier__c
 																	FROM Language_Pairs__r)
 															FROM Translator__c
 															WHERE Id IN :traIdSet]);
