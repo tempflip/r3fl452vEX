@@ -91,7 +91,7 @@
                 <field>Kalkulacios_bazis__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Estimated_Units__c</field>
             </layoutItems>
             <layoutItems>

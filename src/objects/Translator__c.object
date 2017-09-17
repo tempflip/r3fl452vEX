@@ -370,10 +370,6 @@
                     <default>false</default>
                 </value>
                 <value>
-                    <fullName>BIZT</fullName>
-                    <default>false</default>
-                </value>
-                <value>
                     <fullName>ELEKTR</fullName>
                     <default>false</default>
                 </value>
@@ -390,11 +386,7 @@
                     <default>false</default>
                 </value>
                 <value>
-                    <fullName>EÜ</fullName>
-                    <default>false</default>
-                </value>
-                <value>
-                    <fullName>PÜ</fullName>
+                    <fullName>GASZTRONÓMIA</fullName>
                     <default>false</default>
                 </value>
                 <value>
@@ -406,7 +398,7 @@
                     <default>false</default>
                 </value>
                 <value>
-                    <fullName>HR</fullName>
+                    <fullName>HADIIPAR</fullName>
                     <default>false</default>
                 </value>
                 <value>
@@ -430,6 +422,18 @@
                     <default>false</default>
                 </value>
                 <value>
+                    <fullName>OKIRAT</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>EÜ</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>PÜ</fullName>
+                    <default>false</default>
+                </value>
+                <value>
                     <fullName>SAP</fullName>
                     <default>false</default>
                 </value>
@@ -438,7 +442,15 @@
                     <default>false</default>
                 </value>
                 <value>
-                    <fullName>OKIRAT</fullName>
+                    <fullName>TÁRSTUD</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>TERMTUD</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>VEGYIPAR</fullName>
                     <default>false</default>
                 </value>
             </valueSetDefinition>
