@@ -204,6 +204,7 @@
     </layoutSections>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>Translation__c.NAME</fields>
         <fields>Rating__c</fields>
         <fields>Type__c</fields>
         <fields>Task__c</fields>

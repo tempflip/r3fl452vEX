@@ -340,7 +340,7 @@
 
 
 
-        
+        <!--
         <apex:pageBlock title="Értékelés" mode="mainDetail">
             <apex:pageBlockButtons location="bottom">
                 <apex:commandButton value="Update Rating" action="{!rateTranslators}"/>
@@ -424,6 +424,8 @@
                    </apex:column>
             </apex:pageBlockTable>
         </apex:pageBlock>
+
+        -->
     </apex:form>
     
 <script>

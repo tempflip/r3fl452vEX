@@ -180,7 +180,6 @@
         <externalId>false</externalId>
         <label>Megrendelés</label>
         <referenceTo>Translation__c</referenceTo>
-        <relationshipLabel>Translation Feedbacks</relationshipLabel>
         <relationshipName>Translation_Feedbacks</relationshipName>
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
@@ -193,7 +192,6 @@
         <externalId>false</externalId>
         <label>Fordító</label>
         <referenceTo>Translator__c</referenceTo>
-        <relationshipLabel>Translation Feedbacks</relationshipLabel>
         <relationshipName>Translation_Feedbacks</relationshipName>
         <relationshipOrder>1</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
@@ -226,13 +224,13 @@
             </valueSetDefinition>
         </valueSet>
     </fields>
-    <label>Translation Feedback</label>
+    <label>Fordítói Minősítés</label>
     <nameField>
         <displayFormat>{000000}</displayFormat>
         <label>Translation Feedback Name</label>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Translation Feedbacks</pluralLabel>
+    <pluralLabel>Fordítói Minősítések</pluralLabel>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
 </CustomObject>
