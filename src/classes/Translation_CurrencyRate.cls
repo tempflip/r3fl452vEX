@@ -6,7 +6,7 @@ public with sharing class Translation_CurrencyRate extends TriggerClass {
 		if (disableTrigger == true) return false;
 
 		return sObjectOld.get('Estimated_Price__c') != sObjectNew.get('Estimated_Price__c')
-		//|| sObjectOld.get('Estimated_Price_EUR__c') != sObjectNew.get('Estimated_Price_EUR__c')
+		|| sObjectOld.get('Estimated_Price_EUR__c') != sObjectNew.get('Estimated_Price_EUR__c')
 		;
 	}	
 
